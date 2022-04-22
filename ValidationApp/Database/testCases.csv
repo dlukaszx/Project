@@ -1,0 +1,3 @@
+Id,Record_type,Title,Description,Configuration,Date,Priority,Owner,Parent_TC_Definition
+9,TestCase,Browser check,Check if app works on specified browsers,Internet Explorer,2022-04-23,Low,Piotr,7
+10,TestCase,Login check,Check if user can login,positive scenario with working login and password,2022-04-23,High,Piotr,8
