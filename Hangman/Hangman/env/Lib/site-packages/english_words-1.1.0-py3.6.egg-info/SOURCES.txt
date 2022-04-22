@@ -1,0 +1,10 @@
+README.md
+setup.cfg
+setup.py
+english_words/__init__.py
+english_words/version.py
+english_words/web2.txt
+english_words.egg-info/PKG-INFO
+english_words.egg-info/SOURCES.txt
+english_words.egg-info/dependency_links.txt
+english_words.egg-info/top_level.txt
