@@ -1,6 +1,9 @@
+import sys
+sys.path.append('env/Lib/site-packages')
 from english_words import english_words_lower_alpha_set as words
 import random
 import csv
+
 
 with open('data/proverbs.csv') as f:
     reader = csv.reader(f)
