@@ -50,15 +50,15 @@ def addRecordMenu():
 	match selectedOption:
 		case "1":
 			print ("Option 1")
-			dataBaseLogic.insertToDatabase("testCase")
+			dataBaseLogic.insertToDatabase("testPlan")
 		case "2":
-			print ("Option 2")
+			dataBaseLogic.insertToDatabase("testCaseDefinition")
 		case "3":
-			print ("Option 3")
+			dataBaseLogic.insertToDatabase("testCase")
 		case "4":
-			print ("Option 4")
+			dataBaseLogic.insertToDatabase("testResult")
 		case "5":
-			print ("Option 5")
+			dataBaseLogic.insertToDatabase("testCycle")
 		case "9":
 			print ("Moving to main menu")
 			mainMenu()

@@ -1,0 +1,5 @@
+Id,Record_type,Title,Build_version,Date,Owner
+1,TestCycle,Project X,X_0_0_1,2022-04-23,Piotr
+2,TestCycle,Projekt X,X_0_0_2,2022-04-23,Piotr
+3,TestCycle,Projekt Y,Y_0_0_1,2022-04-23,Marta
+4,TestCycle,Projekt Y,Y_0_0_2,2022-04-23,Marta
