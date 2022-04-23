@@ -15,23 +15,21 @@ def mainMenu():
 	print ("0. Leave program")
 	
 	selectedOption = input ("Select option: ")
-	match selectedOption:
-		case "1":
-			print ("Option 1")
-			addRecordMenu()
-		case "2":
-			print ("Option 2")
-		case "3":
-			dataBaseLogic.listDatabase("testCase")
-		case "4":
-			dataBaseLogic.listDatabase("testResult")
-		case "5":
-			dataBaseLogic.listDatabase("testResult")
-		case "0":
-			print ("Goodbye")
-			quit()
-		case _:
-			print ("Selected option doesn't exist.")
+	if selectedOption == "1":
+		addRecordMenu()
+	elif selectedOption == "2":
+		print ("Option 2")
+	elif selectedOption == "3":
+		dataBaseLogic.listDatabase("testCase")
+	elif selectedOption == "4":
+		dataBaseLogic.listDatabase("testResult")
+	elif selectedOption == "5":
+		dataBaseLogic.listDatabase("testResult")
+	elif selectedOption == "0":
+		print ("Goodbye")
+		quit()
+	else:
+		print ("Selected option doesn't exist.")
 	input("Press ENTER to continue...")
 	mainMenu()
 	
@@ -47,26 +45,24 @@ def addRecordMenu():
 	print ("0. Leave program")
 	
 	selectedOption = input ("Select option: ")
-	match selectedOption:
-		case "1":
-			print ("Option 1")
-			dataBaseLogic.insertToDatabase("testPlan")
-		case "2":
-			dataBaseLogic.insertToDatabase("testCaseDefinition")
-		case "3":
-			dataBaseLogic.insertToDatabase("testCase")
-		case "4":
-			dataBaseLogic.insertToDatabase("testResult")
-		case "5":
-			dataBaseLogic.insertToDatabase("testCycle")
-		case "9":
-			print ("Moving to main menu")
-			mainMenu()
-		case "0":
-			print ("Goodbye")
-			quit()
-		case _:
-			print ("Selected option doesn't exist.")
+	if selectedOption == "1":
+		dataBaseLogic.insertToDatabase("testPlan")
+	elif selectedOption == "2":
+		dataBaseLogic.insertToDatabase("testCaseDefinition")
+	elif selectedOption == "3":
+		dataBaseLogic.insertToDatabase("testCase")
+	elif selectedOption == "4":
+		dataBaseLogic.insertToDatabase("testResult")
+	elif selectedOption == "5":
+		dataBaseLogic.insertToDatabase("testCycle")
+	elif selectedOption == "9":
+		print ("Moving to main menu")
+		mainMenu()
+	elif selectedOption == "0":
+		print ("Goodbye")
+		quit()
+	else:
+		print ("Selected option doesn't exist.")
 	input("Press ENTER to continue...")
 	addRecordMenu()
 	

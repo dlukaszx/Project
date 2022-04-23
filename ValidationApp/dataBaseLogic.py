@@ -19,17 +19,17 @@ def insertToDatabase(databaseName):
 		databaseWriteMode = 'w'
 		writeHeaderIntoBase = True
 	newId = findUniqueId()
-	match databaseName:
-		case "testCase":
-			dataToInsert = createNewTestCase(newId)
-		case "testPlan":
-			dataToInsert = createNewTestPlan(newId)
-		case "testCaseDefinition":
-			dataToInsert = createNewTestCaseDefinition(newId)
-		case "testResult":
-			dataToInsert = createNewTestResult(newId)
-		case "testCycle":
-			dataToInsert = createNewTestCycle(newId)
+	if databaseName == "testCase":
+		dataToInsert = createNewTestCase(newId)
+	if databaseName == "testPlan":
+		dataToInsert = createNewTestPlan(newId)
+	if databaseName == "testCaseDefinition":
+		dataToInsert = createNewTestCaseDefinition(newId)
+	if databaseName == "testResult":
+		dataToInsert = createNewTestResult(newId)
+	if databaseName == "testCycle":
+		dataToInsert = createNewTestCycle(newId)
+	
 	if dataToInsert == 0:
 		print ("Wrong input")
 	else:
@@ -46,17 +46,16 @@ def listDatabase(databaseName):
 		return 0
 
 def selectDatabase(databaseName):
-	match databaseName:
-		case "testCase":
-			return testCaseDatabasePath
-		case "testPlan":
-			return testPlanDatabasePath
-		case "testCaseDefinition":
-			return testCaseDefinitionDatabasePath
-		case "testResult":
-			return testResultDatabasePath
-		case "testCycle":
-			return testCycleDatabasePath
+	if databaseName == "testCase":
+		return testCaseDatabasePath
+	if databaseName == "testPlan":
+		return testPlanDatabasePath
+	if databaseName == "testCaseDefinition":
+		return testCaseDefinitionDatabasePath
+	if databaseName == "testResult":
+		return testResultDatabasePath
+	if databaseName == "testCycle":
+		return testCycleDatabasePath
 
 def findUniqueId():
 	listOfExistingDatabases = [file for file in listdir(databaseLocation) if isfile(join(databaseLocation, file))]

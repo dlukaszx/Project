@@ -1,2 +1,3 @@
 Id,Record_type,Title,Test_cycle,Result,Date,Owner,Parent_Test_Case
 11,TestResult,Browser check,1,PASS,2022-04-23,Piotr,9
+15,TestResult,Check if buttons works fine,3,PASS,2022-04-23,Piotr,14
