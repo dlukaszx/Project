@@ -8,7 +8,7 @@ def mainMenu():
 	print ("Welcome in testing database.")
 	print ("Choose the action:\n")
 	print ("1. Add new record")
-	print ("2. Add relation")
+	print ("2. Corelate existing Test Case Definition with existing Test Plan")
 	print ("3. List all Test Cases for specific Test Plan")
 	print ("4. List all Test Results for specific Test Plan")
 	print ("5. List all Test Results for specific Test Cycle")
@@ -18,7 +18,7 @@ def mainMenu():
 	if selectedOption == "1":
 		addRecordMenu()
 	elif selectedOption == "2":
-		print ("Option 2")
+		dataBaseLogic.addRelationBetweenTpAndTcd()
 	elif selectedOption == "3":
 		dataBaseLogic.listDatabase("testCase")
 	elif selectedOption == "4":
