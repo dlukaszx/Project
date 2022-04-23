@@ -133,11 +133,8 @@ def createNewTestCase(id):
 	openedTestCaseDefinitionDatabase = pd.read_csv(testCaseDefinitionDatabasePath, skiprows=0)
 	testCaseDefinitionIds =[]
 	testCaseDefinitionIds.extend(openedTestCaseDefinitionDatabase["Id"])
-	print (testCaseDefinitionIds)
 	checkIfTcdExists = checkIfElementExistsInList(testCaseDefinitionIds, parentTcdId)
 	if  checkIfTcdExists == False:
-		print ("There is no Test Case Definition with specified ID. Try adding proper TCD Id\n\n")
-		print ("List of available Test Case Definitions:\n")
 		listDatabase("testCaseDefinition")
 		return 0
 	tcdRowIndex = openedTestCaseDefinitionDatabase[openedTestCaseDefinitionDatabase['Id']==int(parentTcdId)].index.values.astype(int)[0]
@@ -164,13 +161,11 @@ def createNewTestCaseDefinition(id):
 	openedTestPlanDatabase = pd.read_csv(testPlanDatabasePath, skiprows=0)
 	testPlanIds =[]
 	testPlanIds.extend(openedTestPlanDatabase["Id"])
-	print (testPlanIds)
 	checkIfTestPlanExists = checkIfElementExistsInList(testPlanIds, testPlanId)
 	if  checkIfTestPlanExists == False:
-		print ("There is no Test Plan with specified ID. Try adding proper Test Plan ID Id\n\n")
-		print ("List of available Test Plans:\n")
 		listDatabase("testPlan")
 		return 0
+	testPlanId += "+"
 	testCaseDefinitionDate = date.today()
 	testCaseDefinitionTitle = input("Specify title for this Test Case Definition: ")
 	testCaseDefinitionDescription = input("Specify description for this Test Case Definition: ")
@@ -184,22 +179,16 @@ def createNewTestResult(id):
 	openedTestCaseDatabase = pd.read_csv(testCaseDatabasePath, skiprows=0)
 	testCaseIds =[]
 	testCaseIds.extend(openedTestCaseDatabase["Id"])
-	print (testCaseIds)
 	checkIfTestCaseExists = checkIfElementExistsInList(testCaseIds, parentTestCaseId)
 	if  checkIfTestCaseExists == False:
-		print ("There is no Test Case with specified ID. Cannot add result for wrong Test Case\n\n")
-		print ("List of available Test Cases:\n")
 		listDatabase("testCase")
 		return 0
 	testCycleId = input ("Insert ID of Test Cycle for this result: ")
 	openedTestCycleDatabase = pd.read_csv(testCycleDatabasePath, skiprows=0)
 	testCycleIds =[]
 	testCycleIds.extend(openedTestCycleDatabase["Id"])
-	print (testCycleIds)
 	checkIfTestCycleExists = checkIfElementExistsInList(testCycleIds, testCycleId)
 	if  checkIfTestCycleExists == False:
-		print ("There is no Test Cycle with specified ID. Cannot add result without Test Cycle specified\n\n")
-		print ("List of available Test Cycles:\n")
 		listDatabase("testCycle")
 		return 0
 	testCaseRowIndex = openedTestCaseDatabase[openedTestCaseDatabase['Id']==int(parentTestCaseId)].index.values.astype(int)[0]
@@ -219,8 +208,38 @@ def createNewTestCycle(id):
 	data = testCyclePattern(id, testCycleTitle, testCycleVersion, testCycleDate, testCycleOwner)
 	return data
 
+def addRelationBetweenTpAndTcd():
+	testCaseDefinitionId = input ("Insert ID of Test Case Definition to add relation: ")
+	openedTestCaseDefinitionDatabase = pd.read_csv(testCaseDefinitionDatabasePath, skiprows=0)
+	testCaseDefinitionIds =[]
+	testCaseDefinitionIds.extend(openedTestCaseDefinitionDatabase["Id"])
+	checkIfTcdExists = checkIfElementExistsInList(testCaseDefinitionIds, testCaseDefinitionId)
+	if  checkIfTcdExists == False:
+		listDatabase("testCaseDefinition")
+		return 0
+	testPlanId = input ("Insert ID of Test Plan to add relation ")
+	openedTestPlanDatabase = pd.read_csv(testPlanDatabasePath, skiprows=0)
+	testPlanIds =[]
+	testPlanIds.extend(openedTestPlanDatabase["Id"])
+	checkIfTestPlanExists = checkIfElementExistsInList(testPlanIds, testPlanId)
+	if  checkIfTestPlanExists == False:
+		listDatabase("testPlan")
+		return 0
+	testCaseDefinitionRowIndex = openedTestCaseDefinitionDatabase[openedTestCaseDefinitionDatabase['Id']==int(testCaseDefinitionId)].index.values.astype(int)[0]
+	testPlansRelatedWithSelectedTcd = openedTestCaseDefinitionDatabase['Related_Test_Plans'].values[testCaseDefinitionRowIndex]
+	listOfRelatedTestPans = testPlansRelatedWithSelectedTcd.split("+")
+	for testPlan in listOfRelatedTestPans:
+		if testPlan == testPlanId:
+			print("Specified Test Case Definition is already corelated with this Test Plan")
+			return 0
+	valueToInsert = testPlansRelatedWithSelectedTcd + testPlanId + "+"
+	openedTestCaseDefinitionDatabase.at[testCaseDefinitionRowIndex, 'Related_Test_Plans'] = valueToInsert
+	openedTestCaseDefinitionDatabase.to_csv(testCaseDefinitionDatabasePath, index = False)
+
 def checkIfElementExistsInList(listName, element):
 	for singleElement in range(len(listName)):
 		if str(listName[singleElement]) == element:
 			return True
+	print ("There is no record with specified ID.\n\n")
+	print ("List of available records:\n")
 	return False

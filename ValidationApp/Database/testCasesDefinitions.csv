@@ -1,4 +1,5 @@
 Id,Record_type,Title,Description,Date,Priority,Owner,Related_Test_Plans
-7,TestCaseDefinition,Browser check,Check if app works on specified browsers,2022-04-23,Medium,Piotr,5
-8,TestCaseDefinition,Login check,Check if user can login,2022-04-23,High,Piotr,6
-13,TestCaseDefinition,Check if buttons works fine,Click specified button and check if action is as intended,2022-04-23,Medium,Piotr,12
+7,TestCaseDefinition,Browser check,Check if app works on specified browsers,2022-04-23,Medium,Piotr,5+
+8,TestCaseDefinition,Login check,Check if user can login,2022-04-23,High,Piotr,6+
+13,TestCaseDefinition,Check if buttons works fine,Click specified button and check if action is as intended,2022-04-23,Medium,Piotr,12+6+5+
+16,TestCaseDefinition,Input test,Check if text can be entered in fields,2022-04-23,Medium,Piotr,5+
