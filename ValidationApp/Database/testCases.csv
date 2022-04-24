@@ -2,3 +2,4 @@ Id,Record_type,Title,Description,Configuration,Date,Priority,Owner,Parent_TC_Def
 9,TestCase,Browser check,Check if app works on specified browsers,Internet Explorer,2022-04-23,Low,Piotr,7
 10,TestCase,Login check,Check if user can login,positive scenario with working login and password,2022-04-23,High,Piotr,8
 14,TestCase,Check if buttons works fine,Click specified button and check if action is as intended,"Check ""Home"" Button",2022-04-23,Medium,Piotr,13
+18,TestCase,Browser check,Check if app works on specified browsers,Chrome,2022-04-24,Low,Piotr,7
