@@ -65,65 +65,65 @@ def findUniqueId():
 		allIds.extend(openedDatabase["Id"])
 	return max(allIds)+1
 	
-def testCasePattern(id, title, description, configuration, date, priority, owner, parentId):
+def testCasePattern(id, title, description, configuration, priority, owner, parentId):
 	dataToInsert = {
 					'Id' : [id],
 					'Record_type' : ['TestCase'],
 					'Title' : [title],
 					'Description' : [description],
 					'Configuration' : [configuration],
-					'Date' : [date],
+					'Date' : [date.today()],
 					'Priority' : [priority],
 					'Owner' : [owner],
 					'Parent_TC_Definition' : [parentId]
 					}
 	return dataToInsert;
 	
-def testPlanPattern(id, title, description, date, priority, owner):
+def testPlanPattern(id, title, description, priority, owner):
 	dataToInsert = {
 					'Id' : [id],
 					'Record_type' : ['TestPlan'],
 					'Title' : [title],
 					'Description' : [description],
-					'Date' : [date],
+					'Date' : [date.today()],
 					'Priority' : [priority],
 					'Owner' : [owner],
 					}
 	return dataToInsert;
 	
-def testCaseDefinitionPattern(id, title, description, date, priority, owner, testPlanId):
+def testCaseDefinitionPattern(id, title, description, priority, owner, testPlanId):
 	dataToInsert = {
 					'Id' : [id],
 					'Record_type' : ['TestCaseDefinition'],
 					'Title' : [title],
 					'Description' : [description],
-					'Date' : [date],
+					'Date' : [date.today()],
 					'Priority' : [priority],
 					'Owner' : [owner],
 					'Related_Test_Plans' : [testPlanId]
 					}
 	return dataToInsert;
 	
-def testResultPattern(id, title, result, date, owner, parentId, cycleId):
+def testResultPattern(id, title, result, owner, parentId, cycleId):
 	dataToInsert = {
 					'Id' : [id],
 					'Record_type' : ['TestResult'],
 					'Title' : [title],
 					'Test_cycle' : [cycleId],
 					'Result' : [result],
-					'Date' : [date],
+					'Date' : [date.today()],
 					'Owner' : [owner],
 					'Parent_Test_Case' : [parentId],
 					}
 	return dataToInsert;
 	
-def testCyclePattern(id, title, version, date, owner):
+def testCyclePattern(id, title, version, owner):
 	dataToInsert = {
 					'Id' : [id],
 					'Record_type' : ['TestCycle'],
 					'Title' : [title],
 					'Build_version' : [version],
-					'Date' : [date],
+					'Date' : [date.today()],
 					'Owner' : [owner]
 					}
 	return dataToInsert;
@@ -131,7 +131,7 @@ def testCyclePattern(id, title, version, date, owner):
 def createNewTestCase(id):
 	parentTcdId = input ("Insert ID of parent Test Case Definition for new Test Case: ")
 	openedTestCaseDefinitionDatabase = pd.read_csv(testCaseDefinitionDatabasePath, skiprows=0)
-	testCaseDefinitionIds =[]
+	testCaseDefinitionIds = []
 	testCaseDefinitionIds.extend(openedTestCaseDefinitionDatabase["Id"])
 	checkIfTcdExists = checkIfElementExistsInList(testCaseDefinitionIds, parentTcdId)
 	if  checkIfTcdExists == False:
@@ -140,38 +140,35 @@ def createNewTestCase(id):
 	tcdRowIndex = openedTestCaseDefinitionDatabase[openedTestCaseDefinitionDatabase['Id']==int(parentTcdId)].index.values.astype(int)[0]
 	testCaseTitle = openedTestCaseDefinitionDatabase['Title'].values[tcdRowIndex]
 	testCaseDescription = openedTestCaseDefinitionDatabase['Description'].values[tcdRowIndex]
-	testCaseDate = date.today()
 	testCaseConfiguration = input("Specify configuration for this Test Case: ")
 	testCasePriority = input("Specify priority of this Test Case: ")
 	testCaseOwner = input("Specify owner of this Test Case: ")
-	data = testCasePattern(id, testCaseTitle, testCaseDescription, testCaseConfiguration, testCaseDate, testCasePriority, testCaseOwner, parentTcdId)
+	data = testCasePattern(id, testCaseTitle, testCaseDescription, testCaseConfiguration, testCasePriority, testCaseOwner, parentTcdId)
 	return data
 
 def createNewTestPlan(id):
-	testPlanDate = date.today()
 	testPlanTitle = input("Specify title for this Test Plan: ")
 	testPlanDescription = input("Specify description for this Test Plan: ")
 	testPlanPriority = input("Specify priority of this Test Plan: ")
 	testPlanOwner = input("Specify owner of this Test Plan: ")
-	data = testPlanPattern(id, testPlanTitle, testPlanDescription, testPlanDate, testPlanPriority, testPlanOwner)
+	data = testPlanPattern(id, testPlanTitle, testPlanDescription, testPlanPriority, testPlanOwner)
 	return data
 	
 def createNewTestCaseDefinition(id):
 	testPlanId = input ("What Test Plan is this definition for? ")
 	openedTestPlanDatabase = pd.read_csv(testPlanDatabasePath, skiprows=0)
-	testPlanIds =[]
+	testPlanIds = []
 	testPlanIds.extend(openedTestPlanDatabase["Id"])
 	checkIfTestPlanExists = checkIfElementExistsInList(testPlanIds, testPlanId)
 	if  checkIfTestPlanExists == False:
 		listDatabase("testPlan")
 		return 0
 	testPlanId += "+"
-	testCaseDefinitionDate = date.today()
 	testCaseDefinitionTitle = input("Specify title for this Test Case Definition: ")
 	testCaseDefinitionDescription = input("Specify description for this Test Case Definition: ")
 	testCaseDefinitionPriority = input("Specify priority of this Test Case Definition: ")
 	testCaseDefinitionOwner = input("Specify owner of this Test Case Definition: ")
-	data = testCaseDefinitionPattern(id, testCaseDefinitionTitle, testCaseDefinitionDescription, testCaseDefinitionDate, testCaseDefinitionPriority, testCaseDefinitionOwner, testPlanId)
+	data = testCaseDefinitionPattern(id, testCaseDefinitionTitle, testCaseDefinitionDescription, testCaseDefinitionPriority, testCaseDefinitionOwner, testPlanId)
 	return data
 	
 def createNewTestResult(id):
@@ -185,7 +182,7 @@ def createNewTestResult(id):
 		return 0
 	testCycleId = input ("Insert ID of Test Cycle for this result: ")
 	openedTestCycleDatabase = pd.read_csv(testCycleDatabasePath, skiprows=0)
-	testCycleIds =[]
+	testCycleIds = []
 	testCycleIds.extend(openedTestCycleDatabase["Id"])
 	checkIfTestCycleExists = checkIfElementExistsInList(testCycleIds, testCycleId)
 	if  checkIfTestCycleExists == False:
@@ -195,17 +192,15 @@ def createNewTestResult(id):
 	testResultTitle = openedTestCaseDatabase['Title'].values[testCaseRowIndex]
 	testResultConfiguration = openedTestCaseDatabase['Configuration'].values[testCaseRowIndex]
 	testResult = input("What is the result of this test: ")
-	testResultDate = date.today()
 	testResultOwner = input("Who is submitting result? ")
-	data = testResultPattern(id, testResultTitle, testResult, testResultDate, testResultOwner, parentTestCaseId, testCycleId)
+	data = testResultPattern(id, testResultTitle, testResult, testResultOwner, parentTestCaseId, testCycleId)
 	return data
 	
 def createNewTestCycle(id):
-	testCycleDate = date.today()
 	testCycleTitle = input("Specify title for this Test Cycle: ")
 	testCycleVersion = input("Specify build version: ")
 	testCycleOwner = input("Specify owner of this Test Cycle: ")
-	data = testCyclePattern(id, testCycleTitle, testCycleVersion, testCycleDate, testCycleOwner)
+	data = testCyclePattern(id, testCycleTitle, testCycleVersion, testCycleOwner)
 	return data
 
 def addRelationBetweenTpAndTcd():
@@ -219,7 +214,7 @@ def addRelationBetweenTpAndTcd():
 		return 0
 	testPlanId = input ("Insert ID of Test Plan to add relation ")
 	openedTestPlanDatabase = pd.read_csv(testPlanDatabasePath, skiprows=0)
-	testPlanIds =[]
+	testPlanIds = []
 	testPlanIds.extend(openedTestPlanDatabase["Id"])
 	checkIfTestPlanExists = checkIfElementExistsInList(testPlanIds, testPlanId)
 	if  checkIfTestPlanExists == False:

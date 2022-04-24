@@ -1,5 +1,6 @@
 import os
 import dataBaseLogic
+import reporting
 
 cls = lambda: os.system('cls')
 
@@ -12,6 +13,7 @@ def mainMenu():
 	print ("3. List all Test Cases for specific Test Plan")
 	print ("4. List all Test Results for specific Test Plan")
 	print ("5. List all Test Results for specific Test Cycle")
+	print ("6. Export validation report for selected Test Cycle")
 	print ("0. Leave program")
 	
 	selectedOption = input ("Select option: ")
@@ -25,6 +27,8 @@ def mainMenu():
 		dataBaseLogic.listDatabase("testResult")
 	elif selectedOption == "5":
 		dataBaseLogic.listDatabase("testResult")
+	elif selectedOption == "6":
+		reporting.generateValidationReport()
 	elif selectedOption == "0":
 		print ("Goodbye")
 		quit()
