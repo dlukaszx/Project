@@ -181,7 +181,14 @@ def createNewTestResult(id):
     testCaseRowIndex = openedTestCaseDatabase[openedTestCaseDatabase['Id']==int(parentTestCaseId)].index.values.astype(int)[0]
     testResultTitle = openedTestCaseDatabase['Title'].values[testCaseRowIndex]
     testResultConfiguration = openedTestCaseDatabase['Configuration'].values[testCaseRowIndex]
-    testResult = input("What is the result of this test: ")
+    testResult = input("What is the result of this test (PASS/FAIL): ")
+    if testResult == 'fail' or testResult == 'FAIL' or testResult == 'f' or testResult == 'F':
+        testResult = 'FAIL'
+    elif testResult == 'pass' or testResult == 'PASS' or testResult == 'p' or testResult == 'P':
+        testResult = 'PASS'
+    else:
+        print (testResult + " is not valid result. Available results are PASS or FAIL")
+        return 0
     testResultOwner = input("Who is submitting result? ")
     data = testResultPattern(id, testResultTitle, testResult, testResultOwner, parentTestCaseId, testCycleId)
     return data
