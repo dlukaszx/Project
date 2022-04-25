@@ -30,9 +30,7 @@ def mainMenu():
 	elif selectedOption == "6":
 		reporting.generateValidationReport()
 	elif selectedOption == "0":
-		print ("Press any key to exit")
-		input()
-		exit()
+		quit()
 	else:
 		print ("Selected option doesn't exist.")
 	input("Press ENTER to continue...")
@@ -64,9 +62,7 @@ def addRecordMenu():
 		print ("Moving to main menu")
 		mainMenu()
 	elif selectedOption == "0":
-		print ("Press any key to exit")
-		input()
-		exit()
+		quit()
 	else:
 		print ("Selected option doesn't exist.")
 	input("Press ENTER to continue...")
