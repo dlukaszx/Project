@@ -77,7 +77,7 @@ def testCasePattern(id, title, description, configuration, priority, owner, pare
                     'Owner' : [owner],
                     'Parent_TC_Definition' : [parentId]
                     }
-    return dataToInsert;
+    return dataToInsert
     
 def testPlanPattern(id, title, priority, owner):
     dataToInsert = {
@@ -88,7 +88,7 @@ def testPlanPattern(id, title, priority, owner):
                     'Priority' : [priority],
                     'Owner' : [owner],
                     }
-    return dataToInsert;
+    return dataToInsert
     
 def testCaseDefinitionPattern(id, title, description, priority, owner, testPlanId):
     dataToInsert = {
@@ -101,7 +101,7 @@ def testCaseDefinitionPattern(id, title, description, priority, owner, testPlanI
                     'Owner' : [owner],
                     'Related_Test_Plans' : [testPlanId]
                     }
-    return dataToInsert;
+    return dataToInsert
     
 def testResultPattern(id, title, result, owner, parentId, cycleId):
     dataToInsert = {
@@ -114,7 +114,7 @@ def testResultPattern(id, title, result, owner, parentId, cycleId):
                     'Owner' : [owner],
                     'Parent_Test_Case' : [parentId],
                     }
-    return dataToInsert;
+    return dataToInsert
     
 def testCyclePattern(id, title, version, owner):
     dataToInsert = {
@@ -125,7 +125,7 @@ def testCyclePattern(id, title, version, owner):
                     'Date' : [date.today()],
                     'Owner' : [owner]
                     }
-    return dataToInsert;
+    return dataToInsert
     
 def createNewTestCase(id):
     askForDatabseList("testCaseDefinition")
@@ -243,3 +243,74 @@ def askForDatabseList(databaseName):
             break
         else:
             print ("Please provide proper answer (Y/N)")
+
+def listFilteredRecords(recordType, filteredBy):
+    databasePath = selectDatabase(filteredBy)
+    askForDatabseList(filteredBy)
+    checkIfRecordExists = False
+    relatedTo = '0'
+    while checkIfRecordExists == False:
+        relatedTo = input("Select %s to list all related %ss or type 0 to return to menu: " % (filteredBy, recordType))
+        if relatedTo == '0':
+            return False
+        else:
+            openedDatabase = pd.read_csv(databasePath, skiprows=0)
+            checkIfRecordExists = checkIfElementExistsInList(openedDatabase, relatedTo)
+            findRelation(recordType, filteredBy, relatedTo)
+    return False
+
+def findRelation(searchForType, relatedToType, relatedToId):
+        lookForID = False
+        relationIn = relatedToType
+        allRelatives = []
+        exceptionRow = ''
+        while lookForID == False:
+            if relatedToType == "testPlan":
+                relationIn = "testCaseDefinition"
+            elif relatedToType == "testResult":
+                relationIn = "testCase"
+            elif relatedToType == "testCycle":
+                relationIn = "testResult"
+                exceptionRow = "TcTr"
+            else:
+                lookForID = True
+            while lookForID == False:
+                databasePath = selectDatabase(relationIn)
+                print(searchForType, relatedToType)
+                openedDatabase = pd.read_csv(databasePath, skiprows=0)
+                if exceptionRow == "TcTr":
+                    lookForRows = openedDatabase.loc[openedDatabase['Test_cycle'] == int(relatedToId)]
+                    lookForRows = lookForRows.loc['Test_cycle'].tolist()
+                else:
+                    lookForRows = openedDatabase.apply(lambda row: row.astype(str).str.contains(relatedToId).any(), axis=1)
+                    lookForRows = lookForRows.tolist()
+                print(lookForRows,type(lookForRows))
+                if(lookForRows != ''):
+                    for i in range(len(lookForRows)):
+                        if lookForRows[i] is not False:
+                            relatedToRow = openedDatabase.iloc[i]
+                            allRelatives.append(relatedToRow.iloc[0])
+                    print(allRelatives) #1
+                else:
+                    print("No relations found.")
+                    break
+                lookForID = True
+            return False
+
+        databasePath = selectDatabase(relationIn)
+        print(searchForType, relatedToType)
+        openedDatabase = pd.read_csv(databasePath, skiprows=0)
+        relatedToRow = openedDatabase.loc[openedDatabase['Id'] == int(relatedToId)] #dataframe
+        allRelatives = relatedToRow.iloc[:, -1].tolist()
+        print(allRelatives)
+        if allRelatives == []:
+            print("There are no related records")
+            return False
+        else:
+            allRelatives = (str(allRelatives[0])).split('+')
+
+        print(type(allRelatives))
+        print(allRelatives)
+        allRelatives = 0
+        print(relatedIds)
+        return False
