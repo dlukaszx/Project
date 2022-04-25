@@ -22,7 +22,11 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="drawHangman.py" />
+    <Compile Include="guessLetter.py" />
     <Compile Include="Hangman.py" />
+    <Compile Include="launchGame.py" />
+    <Compile Include="printResults.py" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
