@@ -40,9 +40,9 @@ def generateValidationReport():
 		'categories': '=Diagram!B1:D1',
 		'values':     '=Diagram!B2:D2',
 		'points': [
+			{'fill': {'color': 'green'}},
 			{'fill': {'color': 'red'}},
 			{'fill': {'color': 'silver'}},
-			{'fill': {'color': 'green'}},
 		],
 	})
 	
