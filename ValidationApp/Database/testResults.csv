@@ -3,3 +3,4 @@ Id,Record_type,Title,Test_cycle,Result,Date,Owner,Parent_Test_Case
 15,TestResult,Check if buttons works fine,3,PASS,2022-04-23,Piotr,14
 17,TestResult,Browser check,3,PASS,2022-04-24,Piotr,9
 19,TestResult,Browser check,3,FAIL,2022-04-24,Piotr,18
+20,TestResult,Browser check,1,FAIL,2022-04-25,Piotr,9
