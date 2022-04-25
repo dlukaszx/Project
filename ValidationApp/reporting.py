@@ -1,4 +1,3 @@
-from vincent.colors import brews
 import pandas as pd
 import dataBaseLogic
 
@@ -41,9 +40,9 @@ def generateValidationReport():
 		'categories': '=Diagram!B1:D1',
 		'values':     '=Diagram!B2:D2',
 		'points': [
-			{'fill': {'color': brews['Set1'][2]}},
-			{'fill': {'color': brews['Set1'][0]}},
-			{'fill': {'color': brews['Set1'][8]}},
+			{'fill': {'color': 'green'}},
+			{'fill': {'color': 'red'}},
+			{'fill': {'color': 'silver'}},
 		],
 	})
 	
