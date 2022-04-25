@@ -22,11 +22,11 @@ def mainMenu():
     elif selectedOption == "2":
         dataBaseLogic.addRelationBetweenTpAndTcd()
     elif selectedOption == "3":
-        dataBaseLogic.listDatabase("testCase")
+        dataBaseLogic.listFilteredRecords("testCase", "testPlan")
     elif selectedOption == "4":
-        dataBaseLogic.listDatabase("testResult")
+        dataBaseLogic.listFilteredRecords("testResult", "testPlan")
     elif selectedOption == "5":
-        dataBaseLogic.listDatabase("testResult")
+        dataBaseLogic.listFilteredRecords("testResult", "testCycle")
     elif selectedOption == "6":
         reporting.generateValidationReport()
     elif selectedOption == "0":
