@@ -1,6 +1,16 @@
 Id,Record_type,Title,Test_cycle,Result,Date,Owner,Parent_Test_Case
-11,TestResult,Browser check,1,PASS,2022-04-23,Piotr,9
-15,TestResult,Check if buttons works fine,3,PASS,2022-04-23,Piotr,14
-17,TestResult,Browser check,3,PASS,2022-04-24,Piotr,9
-19,TestResult,Browser check,3,FAIL,2022-04-24,Piotr,18
-20,TestResult,Browser check,1,FAIL,2022-04-25,Piotr,9
+26,TestResult,Check if app can be executed,2,PASS,2022-04-25,Piotr,9
+27,TestResult,Check if all game modes can be launched,2,PASS,2022-04-25,Piotr,10
+28,TestResult,Check if all game modes can be launched,2,PASS,2022-04-25,Piotr,11
+29,TestResult,Check if all game modes can be launched,2,FAIL,2022-04-25,Piotr,12
+30,TestResult,Check if all game modes can be launched,2,FAIL,2022-04-25,Piotr,13
+31,TestResult,Negative scenario for game modes,2,PASS,2022-04-25,Piotr,14
+32,TestResult,Negative scenario for game modes,2,PASS,2022-04-25,Piotr,15
+33,TestResult,Negative scenario for game modes,2,PASS,2022-04-25,Piotr,16
+34,TestResult,Negative scenario for game modes,2,PASS,2022-04-25,Piotr,17
+35,TestResult,Check if letter guess is not case sensitive,2,PASS,2022-04-25,Piotr,18
+36,TestResult,Check if letter guess is not case sensitive,2,PASS,2022-04-25,Piotr,19
+37,TestResult,Negative scenario for letter guess,2,PASS,2022-04-25,Piotr,20
+38,TestResult,Negative scenario for letter guess,2,PASS,2022-04-25,Piotr,21
+39,TestResult,Negative scenario for letter guess,2,PASS,2022-04-25,Piotr,22
+40,TestResult,Check if game ends correctly ,2,PASS,2022-04-25,Piotr,23
