@@ -79,12 +79,11 @@ def testCasePattern(id, title, description, configuration, priority, owner, pare
                     }
     return dataToInsert;
     
-def testPlanPattern(id, title, description, priority, owner):
+def testPlanPattern(id, title, priority, owner):
     dataToInsert = {
                     'Id' : [id],
                     'Record_type' : ['TestPlan'],
                     'Title' : [title],
-                    'Description' : [description],
                     'Date' : [date.today()],
                     'Priority' : [priority],
                     'Owner' : [owner],
@@ -146,10 +145,9 @@ def createNewTestCase(id):
 
 def createNewTestPlan(id):
     testPlanTitle = input("Specify title for this Test Plan: ")
-    testPlanDescription = input("Specify description for this Test Plan: ")
     testPlanPriority = input("Specify priority of this Test Plan: ")
     testPlanOwner = input("Specify owner of this Test Plan: ")
-    data = testPlanPattern(id, testPlanTitle, testPlanDescription, testPlanPriority, testPlanOwner)
+    data = testPlanPattern(id, testPlanTitle, testPlanPriority, testPlanOwner)
     return data
     
 def createNewTestCaseDefinition(id):
