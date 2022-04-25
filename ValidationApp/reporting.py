@@ -9,9 +9,7 @@ def generateValidationReport():
     openedTestResultDatabase = pd.read_csv(dataBaseLogic.testResultDatabasePath, skiprows=0)
     openedTestCaseDatabase = pd.read_csv(dataBaseLogic.testCaseDatabasePath, skiprows=0)
     openedTestCycleDatabase = pd.read_csv(dataBaseLogic.testCycleDatabasePath, skiprows=0)
-    testCycleIds = []
-    testCycleIds.extend(openedTestCycleDatabase["Id"])
-    checkIfTestCycleExists = dataBaseLogic.checkIfElementExistsInList(testCycleIds, testCycleToBeReported)
+    checkIfTestCycleExists = dataBaseLogic.checkIfElementExistsInList(openedTestCycleDatabase, testCycleToBeReported)
     if  checkIfTestCycleExists == False:
         dataBaseLogic.listDatabase("testCycle")
         return 0
@@ -31,7 +29,6 @@ def generateValidationReport():
     writer = pd.ExcelWriter(reportName, engine='xlsxwriter')
     dataFrameForChart.to_excel(writer, sheet_name = diagramSheetName)
     filteredTestResultDatabase.to_excel(writer, sheet_name = resultsSheetName)
-    print(xlsxwriter.__version__)
     workbook = writer.book
     worksheet = writer.sheets[diagramSheetName]
     chart = workbook.add_chart({'type': 'pie'})

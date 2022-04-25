@@ -1,4 +1,2 @@
-Id,Record_type,Title,Description,Date,Priority,Owner
-5,TestPlan,TestPlan1,TP1 Description,2022-04-23,High,Piotr
-6,TestPlan,TestPlan2,TP2 Description,2022-04-23,Medium,Piotr
-12,TestPlan,TestPlanUU,TestPlanUUDesc,2022-04-23,Low,Piotr
+Id,Record_type,Title,Date,Priority,Owner
+1,TestPlan,Hangman,2022-04-25,High,Piotr

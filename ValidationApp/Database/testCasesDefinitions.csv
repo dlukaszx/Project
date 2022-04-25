@@ -1,5 +1,7 @@
 Id,Record_type,Title,Description,Date,Priority,Owner,Related_Test_Plans
-7,TestCaseDefinition,Browser check,Check if app works on specified browsers,2022-04-23,Medium,Piotr,5+
-8,TestCaseDefinition,Login check,Check if user can login,2022-04-23,High,Piotr,6+
-13,TestCaseDefinition,Check if buttons works fine,Click specified button and check if action is as intended,2022-04-23,Medium,Piotr,12+6+5+
-16,TestCaseDefinition,Input test,Check if text can be entered in fields,2022-04-23,Medium,Piotr,5+
+3,TestCaseDefinition,Check if app can be executed,Check if app can be executed (PASS condition - application launches without any errors),2022-04-25,High,Piotr,1+
+4,TestCaseDefinition,Check if all game modes can be launched,Check if all game modes can be launched (PASS condition - selected game mode launches),2022-04-25,High,Piotr,1+
+5,TestCaseDefinition,Negative scenario for game modes,Check if there are no exceptions while entering not existing mode (PASS condition - information about wrong selected mode is displayed and user is asked to type proper mode),2022-04-25,Medium,Piotr,1+
+6,TestCaseDefinition,Check if letter guess is not case sensitive,Check if letter guess is not case sensitive (PASS condition - both uppercase and lowercase letters are accepted),2022-04-25,Medium,Piotr,1+
+7,TestCaseDefinition,Negative scenario for letter guess,Check if other characters than letters are not accepted by system (PASS condition - information about wrong input),2022-04-25,Medium,Piotr,1+
+8,TestCaseDefinition,Check if game ends correctly ,Play n rounds of game with intentional wins and loses and check if game closes correctly and player have information about result (PASS condition - game result displayed every round and game closed or restarted without errors),2022-04-25,Low,Piotr,1+

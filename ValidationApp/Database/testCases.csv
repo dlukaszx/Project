@@ -1,5 +1,18 @@
 Id,Record_type,Title,Description,Configuration,Date,Priority,Owner,Parent_TC_Definition
-9,TestCase,Browser check,Check if app works on specified browsers,Internet Explorer,2022-04-23,Low,Piotr,7
-10,TestCase,Login check,Check if user can login,positive scenario with working login and password,2022-04-23,High,Piotr,8
-14,TestCase,Check if buttons works fine,Click specified button and check if action is as intended,"Check ""Home"" Button",2022-04-23,Medium,Piotr,13
-18,TestCase,Browser check,Check if app works on specified browsers,Chrome,2022-04-24,Low,Piotr,7
+9,TestCase,Check if app can be executed,Check if app can be executed (PASS condition - application launches without any errors),Commandline Execution,2022-04-25,High,Piotr,3
+10,TestCase,Check if all game modes can be launched,Check if all game modes can be launched (PASS condition - selected game mode launches),word input,2022-04-25,High,Piotr,4
+11,TestCase,Check if all game modes can be launched,Check if all game modes can be launched (PASS condition - selected game mode launches),proverb input,2022-04-25,High,Piotr,4
+12,TestCase,Check if all game modes can be launched,Check if all game modes can be launched (PASS condition - selected game mode launches),WORD input,2022-04-25,Medium,Piotr,4
+13,TestCase,Check if all game modes can be launched,Check if all game modes can be launched (PASS condition - selected game mode launches),PROVERB input,2022-04-25,Medium,Piotr,4
+14,TestCase,Negative scenario for game modes,Check if there are no exceptions while entering not existing mode (PASS condition - information about wrong selected mode is displayed and user is asked to type proper mode),Empty input,2022-04-25,Low,Piotr,5
+15,TestCase,Negative scenario for game modes,Check if there are no exceptions while entering not existing mode (PASS condition - information about wrong selected mode is displayed and user is asked to type proper mode),wo input,2022-04-25,Low,Piotr,5
+16,TestCase,Negative scenario for game modes,Check if there are no exceptions while entering not existing mode (PASS condition - information about wrong selected mode is displayed and user is asked to type proper mode),rd input,2022-04-25,Low,Piotr,5
+17,TestCase,Negative scenario for game modes,Check if there are no exceptions while entering not existing mode (PASS condition - information about wrong selected mode is displayed and user is asked to type proper mode),  input,2022-04-25,Low,Piotr,5
+18,TestCase,Check if letter guess is not case sensitive,Check if letter guess is not case sensitive (PASS condition - both uppercase and lowercase letters are accepted),Uppercase letter,2022-04-25,Medium,Piotr,6
+19,TestCase,Check if letter guess is not case sensitive,Check if letter guess is not case sensitive (PASS condition - both uppercase and lowercase letters are accepted),Lowercase letter,2022-04-25,Medium,Piotr,6
+20,TestCase,Negative scenario for letter guess,Check if other characters than letters are not accepted by system (PASS condition - information about wrong input),1 input (number check),2022-04-25,Low,Piotr,7
+21,TestCase,Negative scenario for letter guess,Check if other characters than letters are not accepted by system (PASS condition - information about wrong input),* input (special character check),2022-04-25,Low,Piotr,7
+22,TestCase,Negative scenario for letter guess,Check if other characters than letters are not accepted by system (PASS condition - information about wrong input),aa input (more than one letter check),2022-04-25,Low,Piotr,7
+23,TestCase,Check if game ends correctly ,Play n rounds of game with intentional wins and loses and check if game closes correctly and player have information about result (PASS condition - game result displayed every round and game closed or restarted without errors),1 round,2022-04-25,High,Piotr,8
+24,TestCase,Check if game ends correctly ,Play n rounds of game with intentional wins and loses and check if game closes correctly and player have information about result (PASS condition - game result displayed every round and game closed or restarted without errors),5 rounds,2022-04-25,Medium,Piotr,8
+25,TestCase,Check if game ends correctly ,Play n rounds of game with intentional wins and loses and check if game closes correctly and player have information about result (PASS condition - game result displayed every round and game closed or restarted without errors),50 rounds,2022-04-25,Low,Piotr,8
